@@ -4,7 +4,6 @@ package bogdangud.paysystemtask;
 import java.util.Date;
 
 public class ClientMessage {
-//    public String _id;
     public int clientId;
     public String direction;
     public long dateIn;
@@ -18,8 +17,6 @@ public class ClientMessage {
     public int getClientId() {
         return clientId;
     }
-
-
 
     public void setClientId(int clientId) {
         this.clientId = clientId;

@@ -1,6 +1,5 @@
 package bogdangud.paysystemtask;
 
-
 import java.util.Date;
 
 public class IncomingMessage {
@@ -59,15 +58,4 @@ public class IncomingMessage {
         this.email = email;
     }
 
-    @Override
-    public String toString() {
-        return "It is print by IncomingMessage{" +
-                "clientId=" + clientId +
-                ", direction='" + direction + '\'' +
-                ", date=" + date +
-                ", checkpointId=" + checkpointId +
-                ", price=" + price +
-                ", email='" + email + '\'' +
-                '}';
-    }
 }

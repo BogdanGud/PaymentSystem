@@ -14,8 +14,6 @@ public class JsonParser {
         IncomingMessage incomingMessage = new IncomingMessage();
         try {
             incomingMessage = mapper.readValue(input, IncomingMessage.class);
-            System.out.println(incomingMessage);
-
         } catch (JsonGenerationException e) {
             e.printStackTrace();
         } catch (JsonMappingException e) {
@@ -24,22 +22,5 @@ public class JsonParser {
             e.printStackTrace();
         }
         return incomingMessage;
-    }
-
-    public ClientMessage parseDBtoMessage(String input) {
-        ObjectMapper mapper = new ObjectMapper();
-        ClientMessage clientMessage = new ClientMessage();
-        try {
-            clientMessage = mapper.readValue(input, ClientMessage.class);
-            System.out.println(clientMessage);
-
-        } catch (JsonGenerationException e) {
-            e.printStackTrace();
-        } catch (JsonMappingException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return clientMessage;
     }
 }

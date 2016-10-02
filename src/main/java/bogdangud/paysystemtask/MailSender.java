@@ -6,13 +6,12 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
-public class TlsSender  {
-
+public class MailSender {
     private String username;
     private String password;
     private Properties props;
 
-    public TlsSender(String username, String password) {
+    public MailSender(String username, String password) {
         this.username = username;
         this.password = password;
 
@@ -23,7 +22,8 @@ public class TlsSender  {
         props.put("mail.smtp.port", "587");
     }
 
-    public void send(String subject, String text, String fromEmail, String toEmail){
+
+    public void send(String subject, String text, String fromEmail, String toEmail) {
         Session session = Session.getInstance(props, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(username, password);
@@ -32,21 +32,14 @@ public class TlsSender  {
 
         try {
             Message mailMessage = new MimeMessage(session);
-            //от кого
             mailMessage.setFrom(new InternetAddress(username));
-            //кому
             mailMessage.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail));
-            //Заголовок письма
             mailMessage.setSubject(subject);
-            //Содержимое
             mailMessage.setText(text);
-
-            //Отправляем сообщение
             Transport.send(mailMessage);
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }
     }
-
-
 }
+
