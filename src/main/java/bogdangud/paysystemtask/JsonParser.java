@@ -9,17 +9,37 @@ import java.io.IOException;
 
 public class JsonParser {
 
-    public void run(String input) {
+    public IncomingMessage run(String input) {
         ObjectMapper mapper = new ObjectMapper();
+        IncomingMessage incomingMessage = new IncomingMessage();
         try {
-            Message message = mapper.readValue(input, Message.class);
-            System.out.println(message);
+            incomingMessage = mapper.readValue(input, IncomingMessage.class);
+            System.out.println(incomingMessage);
+
         } catch (JsonGenerationException e) {
-        e.printStackTrace();
-    } catch (JsonMappingException e) {
-        e.printStackTrace();
-    } catch (IOException e) {
-        e.printStackTrace();
+            e.printStackTrace();
+        } catch (JsonMappingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return incomingMessage;
     }
+
+    public ClientMessage parseDBtoMessage(String input) {
+        ObjectMapper mapper = new ObjectMapper();
+        ClientMessage clientMessage = new ClientMessage();
+        try {
+            clientMessage = mapper.readValue(input, ClientMessage.class);
+            System.out.println(clientMessage);
+
+        } catch (JsonGenerationException e) {
+            e.printStackTrace();
+        } catch (JsonMappingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return clientMessage;
     }
 }

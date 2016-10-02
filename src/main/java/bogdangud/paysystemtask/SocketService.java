@@ -11,6 +11,8 @@ import java.net.Socket;
 public class SocketService extends Thread {
     ServerSocket serverSocket;
     JsonParser parser = new JsonParser();
+    DefaultMessageProcessor messageProcessor = new DefaultMessageProcessor();
+    IncomingMessage incomingMessage = new IncomingMessage();
 
 
     public void startListener(int portNumber) {
@@ -47,8 +49,9 @@ public class SocketService extends Thread {
                     if (input == null ) {
                         break;
                     }
-                    log("Client message:" + input);
-                    parser.run(input);
+                    log("Client incomingMessage:" + input);
+                    incomingMessage = parser.run(input);
+                    messageProcessor.process(incomingMessage);
                 }
             } catch (IOException e) {
                 log("Error handling client: " + e);
