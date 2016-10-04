@@ -32,8 +32,9 @@ public class DefaultMessageProcessor implements IMessageProcessor {
         String sendMessage = "Hi, client № " + clientId + "! Your amount for payment : "
                 + sum + ", your entry time :" + entryTime + ", your check-out time :" + checkOutTime;
         new Thread(() -> {
-            MailSender mailSender = new MailSender("payservicetest@gmail.com", "12345678test");
-            mailSender.send("Payment System", sendMessage, "payservicetest@gmail.com", email);
+                MailSender mailSender = new MailSender("payservicetest@gmail.com", "12345678test");
+                mailSender.send("Payment System", sendMessage, "payservicetest@gmail.com", email);
+
         }).start();
     }
 }

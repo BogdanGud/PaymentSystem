@@ -9,5 +9,8 @@ Important: for testing use one packet like one string, without “new line” ch
 
 When server receives second packet with "direction" : "out", the program calculates and sends an email with info about amount for payment, entry time and check-out time. For example:
 
+![Alt text](http://i.imgur.com/U37UDj5.png "Mail example")
+
+
 
 
